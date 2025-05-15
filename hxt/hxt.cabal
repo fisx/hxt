@@ -252,3 +252,15 @@ library
 Source-Repository head
   Type:     git
   Location: git://github.com/UweSchmidt/hxt.git
+
+
+test-suite spec
+  type:               exitcode-stdio-1.0
+  main-is:            ReadBinary.hs
+  hs-source-dirs:     test
+
+  build-depends:
+                base
+              , hxt
+              , bytestring
+              , utf8-string

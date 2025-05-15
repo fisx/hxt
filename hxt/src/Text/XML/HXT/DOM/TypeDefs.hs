@@ -210,11 +210,11 @@ instance Binary DTDElem where
 type Blob       = BS.ByteString
 
 blobToString    :: Blob -> String
-blobToString    = CS.unpack
+blobToString    = CS.unpack -- !!
 {-# INLINE blobToString #-}
 
 stringToBlob    :: String -> Blob
-stringToBlob    = CS.pack
+stringToBlob    = CS.pack -- !!
 {-# INLINE stringToBlob #-}
 
 -- -----------------------------------------------------------------------------
