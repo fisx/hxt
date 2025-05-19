@@ -31,7 +31,9 @@ import           Control.FlatSeq
 import           Data.AssocList
 
 import           Data.Binary
+import qualified Data.ByteString                 as SBS
 import qualified Data.ByteString.Lazy            as BS
+import qualified Data.ByteString.Lazy.Char8      as CS
 import qualified Data.ByteString.Lazy.UTF8       as LBSUTF8
 
 import           Data.Tree.NTree.TypeDefs
@@ -210,7 +212,7 @@ instance Binary DTDElem where
 type Blob       = BS.ByteString
 
 blobToString    :: Blob -> String
-blobToString    = LBSUTF8.toString
+blobToString blb = if SBS.isValidUtf8 (BS.toStrict blb) then LBSUTF8.toString blb else CS.unpack blb
 {-# INLINE blobToString #-}
 
 stringToBlob    :: String -> Blob
